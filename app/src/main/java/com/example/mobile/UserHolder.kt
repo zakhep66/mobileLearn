@@ -30,22 +30,25 @@ object UserHolder {
     }
 
 
-    fun registerUserByPhone(fullName: String, rawPhone: String): User{
-        if (rawPhone.matches(phoneFormat))
-            if (fullName !== "")
-                return User.makeUser(fullName, phone = rawPhone)
+    fun registerUserByPhone(fullName: String, rawPhone: String): User = User.makeUser(fullName = fullName, phone = rawPhone)
+        .also { user ->
+            if (map.containsKey(user.phone))
+                throw IllegalArgumentException("phone used")
+            if (cleanPhone(rawPhone).matches("^\\+?[0-9]{11}\$".toRegex()))
+                map[user.login] = user
             else
-                throw IllegalArgumentException("Name shouldn't be empty")
-        else
-            throw IllegalArgumentException("Phone number has wrong format")
-    }
+                throw IllegalArgumentException("phone incorrect")
+        }
 
     fun requestAccessCode(login: String) {
-        val user = mutableMapOf < String, User > ()[login]
-        if (user !== null){
-            user.generateAccessCode()
-        } else {
-            throw IllegalArgumentException("User doesn't exists")
+        val phone = cleanPhone(login)
+        val user = map[phone];
+        if (user != null) {
+            val accessCode = user.generateAccessCode()
+            user.passwordHash = user.encrypt(accessCode)
+            user.accessCode = accessCode;
+            user.sendAccessCodeToUser(phone,accessCode)
+            map[phone] = user
         }
     }
 
