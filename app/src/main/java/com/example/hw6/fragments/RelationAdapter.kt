@@ -57,9 +57,11 @@ class RelationAdapter(myElement: Node, private var is_child: Boolean, frag: Frag
         if (is_child){
             holder.itemView.id_value.text = firstEl.toString()
             holder.itemView.textView2.text = currentItem.id.toString()
+            holder.itemView.textView.text = "-->"
         } else {
             holder.itemView.id_value.text = currentItem.id.toString()
             holder.itemView.textView2.text = firstEl.toString()
+            holder.itemView.textView.text = "<--"
         }
 
 

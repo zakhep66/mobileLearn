@@ -42,8 +42,8 @@ class RelationFragment : Fragment() {
             val recyclerView = view.recycler_relation
             recyclerView.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
-            childButton.setBackgroundColor(Color.GRAY)
-            parentButton.setBackgroundColor(Color.parseColor("#FF3700B3"))
+            childButton.setBackgroundColor(Color.GRAY) // логика кнопок, если нажата - серый, если нажата первая кнопка - серая, и наоборот
+            parentButton.setBackgroundColor(Color.parseColor("#FF3700B3")) // цвет кнопки если нажата вторая кнопка
             //NodeViewModel
             mNodeViewModel = ViewModelProvider(this)[NodeViewModel::class.java]
             mNodeViewModel.readAlldata.observe(viewLifecycleOwner, Observer { node ->
@@ -56,7 +56,7 @@ class RelationFragment : Fragment() {
             val recyclerView = view.recycler_relation
             recyclerView.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
-            parentButton.setBackgroundColor(Color.GRAY)
+            parentButton.setBackgroundColor(Color.GRAY) // смотри комментарии выше, суть та же
             childButton.setBackgroundColor(Color.parseColor("#FF3700B3"))
             //NodeViewModel
             mNodeViewModel = ViewModelProvider(this)[NodeViewModel::class.java]
