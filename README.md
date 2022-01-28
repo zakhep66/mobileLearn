@@ -1,4 +1,4 @@
-рабочая версия
+рабочая версия \n
 сделана на основе
 
 - серия роликов https://www.youtube.com/watch?v=UBCAWfztTrQ
