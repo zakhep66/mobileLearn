@@ -19,12 +19,8 @@ class AddRelationFragment(private var firstNode: Node, private var secondNode: N
 
     private fun addRelation(isParent: Boolean) {
         when(isParent) {
-            false -> mNodeViewModel.updateNode(
-                secondNode.id, (secondNode.nodes + mutableListOf(Node(firstNode.id, firstNode.nodes))) as MutableList<Node>
-            )
-            true -> mNodeViewModel.updateNode(
-                firstNode.id, (firstNode.nodes + mutableListOf(Node(secondNode.id, secondNode.nodes))) as MutableList<Node>
-            )
+            false -> mNodeViewModel.updateNode(secondNode.id, (secondNode.nodes + mutableListOf(Node(firstNode.id, firstNode.nodes))) as MutableList<Node>) // родитель
+            true -> mNodeViewModel.updateNode(firstNode.id, (firstNode.nodes + mutableListOf(Node(secondNode.id, secondNode.nodes))) as MutableList<Node>) // ребенок
         }
     }
 
