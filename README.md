@@ -1,5 +1,5 @@
-рабочая версия \n
-сделана на основе
+Рабочая версия.
+Сделано с помощью
 
 - серия роликов https://www.youtube.com/watch?v=UBCAWfztTrQ
 - http://developer.alexanderklimov.ru/android/
